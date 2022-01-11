@@ -74,5 +74,8 @@
     <ClInclude Include="game_interface.h">
       <Filter>Файлы заголовков\info</Filter>
     </ClInclude>
+    <ClInclude Include="Keys.h">
+      <Filter>Файлы заголовков\enum/structs</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

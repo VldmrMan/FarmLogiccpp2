@@ -8,13 +8,17 @@
 #include "class_resourse.h"
 
 #include "class_invertory.h"
-
-
+#include <conio.h >//getch
+#include "Keys.h"
 
 
 
 static class info
 {
+
+
+
+
 
 public:
 
@@ -271,10 +275,26 @@ public:
 
 	}
 
+	static void show_keys_code()
+	{
+
+		int z;
+		while (true)
+		{
+
+			z = _getch();
+
+			cout << z << endl;
+			}
+
+	}
 
 #pragma endregion
 
-	/*
+
+
+
+/*
 	//unused
 	static void interface_plants_detal(invertory inv, databse db)
 	{
@@ -296,5 +316,9 @@ public:
 
 	}
 */
+
+
+
+
 
 };

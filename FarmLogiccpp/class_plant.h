@@ -12,6 +12,7 @@ public:
 	int ActiveSeedId = 0;
 	int time_of_growth = 0;
 	int time_left = 0;
+	bool can_take = false;
 
 	void plant_tick()
 	{	
@@ -21,12 +22,18 @@ public:
 				if (time_left < time_of_growth)
 					time_left++;
 		}
+
+		if (time_of_growth == time_left && time_of_growth != 0)
+			can_take = true;
 	}	
 
 	string get_progress()
 	{
 		string inf = "";
-		inf = " [" + to_string(time_of_growth) + " / " + to_string(time_left) + "] ";
+	//	inf = " [" + to_string(time_of_growth) + " / " + to_string(time_left) + "] ";
+		inf = " [" + to_string(time_left) + " / " + to_string(time_of_growth) + "] ";
+
+
 		if (time_of_growth != 0)
 		{
 

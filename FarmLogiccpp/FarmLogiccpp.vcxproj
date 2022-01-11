@@ -151,6 +151,7 @@
     <ClInclude Include="data_base.h" />
     <ClInclude Include="foo_info.h" />
     <ClInclude Include="enum_types.h" />
+    <ClInclude Include="Keys.h" />
     <ClInclude Include="test_databse.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

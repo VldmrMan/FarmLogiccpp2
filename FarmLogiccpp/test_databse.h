@@ -22,7 +22,7 @@ class databse
 
 public:
 
-	entity GO_search_entity(int id   )
+	entity   GO_search_entity(int id   )
 	{
 		for (entity i : GO_entity)
 		{
@@ -35,7 +35,7 @@ public:
 		return null_entity;
 	};
 
-	seed   GO_search_seed(int id   )
+	seed     GO_search_seed(int id   )
 	{
 		for (seed i : GO_seeds)
 		{
