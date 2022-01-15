@@ -14,3 +14,7 @@
 
 #define key_yes 121//y
 #define key_no 110//n
+
+#define time_screen_update chrono::milliseconds(100)
+#define time_tick_rate chrono::milliseconds(500)
+

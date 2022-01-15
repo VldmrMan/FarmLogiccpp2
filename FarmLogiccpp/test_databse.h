@@ -20,7 +20,23 @@ class databse
 	vector <seed> GO_seeds;
 	vector <resourse> GO_resourses;
 
-public:
+    public:
+		databse()
+		{
+		};
+
+
+	string get_name(int id)
+	{
+		string ret = "";
+		for (entity i : GO_entity)
+		{
+			if (i.id == id)
+				return i.name;
+		}
+		
+		return "unfounded";
+	}
 
 	entity   GO_search_entity(int id   )
 	{
@@ -64,11 +80,11 @@ public:
 	{
 		//seed 201-299
 		//resourses 101-199
-		seed x = seed(201, "Wheat seed", 5);
+		seed x = seed(201, "Wheat seed", 50);
 		x.create_ressourse_reward(101);
 		x.create_seed_reward(201);
 
-		seed y = seed(202, "Wood seed", 10);
+		seed y = seed(202, "Wood seed", 100);
 		y.create_ressourse_reward(102);
 		y.create_seed_reward(202);
 

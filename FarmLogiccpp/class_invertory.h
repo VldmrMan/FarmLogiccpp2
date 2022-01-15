@@ -8,6 +8,7 @@
 
 #include "class_plant.h"
 #include "test_databse.h"
+#include "Keys.h"
 
 using namespace std;
 class invertory
@@ -29,7 +30,8 @@ public:
 		null_plant.plant_id = 0;
 		null_plant.time_of_growth = 0;
 
-
+		thread th(&invertory::periodic_tick, this);
+		th.detach();
 	};
 
 
@@ -320,6 +322,18 @@ public:
 
 #pragma endregion
 
+
+	void periodic_tick()
+	{
+
+		while (true)
+		{
+			plant_add_tick();
+			this_thread::sleep_for(time_tick_rate);
+		}
+
+
+	}
 
 };
 
