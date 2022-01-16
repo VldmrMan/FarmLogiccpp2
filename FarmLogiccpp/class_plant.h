@@ -30,7 +30,7 @@ public:
 	string get_progress()
 	{
 		string inf = "";
-	//	inf = " [" + to_string(time_of_growth) + " / " + to_string(time_left) + "] ";
+
 		inf = " [" + to_string(time_left) + " / " + to_string(time_of_growth) + "] ";
 
 

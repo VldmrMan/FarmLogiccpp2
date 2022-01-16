@@ -11,16 +11,17 @@
 
 using namespace std;
 
+//старая версия для загрузки из файла
+//не используется
 
-
-class data_base
+class file_data_base
 {
 public:
 
     vector<map<string, string>> data;
     string t;
     ifstream fin;
-    data_base(string way)
+    file_data_base(string way)
     {
         //конструктор - путь до файла
         fin = ifstream(way, ios::in);

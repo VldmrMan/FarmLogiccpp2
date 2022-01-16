@@ -5,12 +5,19 @@
 
 #include <thread>
 #include <chrono>
+#include <shared_mutex>
+
 
 #include "class_plant.h"
 #include "test_databse.h"
 #include "Keys.h"
 
 using namespace std;
+
+
+std::mutex mt_inv; //объ€вление мьютекса
+//при багах поставить лок на одновременное переписывание и выгрузку инфы в интерфейс
+
 class invertory
 {
 public:
@@ -20,7 +27,10 @@ public:
 	map<int, int> invertory_resourses;
 	map<int, int> invertory_seeds;
 	vector <plant> invertory_plants;
+
+
 	databse data;
+
 
 public:
 
@@ -36,7 +46,7 @@ public:
 
 
 #pragma region SomeAdd
-
+	//добавлени€
 
 	void add_plant()
 	{
@@ -68,7 +78,7 @@ public:
 
 
 #pragma region SomeRemove
-
+	//удалени€
 	void remove_seed(int id, int value = 1)
 	{
 		if (invertory_seeds.end() != invertory_seeds.find(id))
@@ -121,7 +131,6 @@ public:
 	};
 
 	//без проверок
-	//используетс€ база!!!!!!!
 	void hard_return_revawds_from_plant(databse db, int plant_id)
 	{
 		plant_id = plant_id - 1;
@@ -223,8 +232,10 @@ public:
 #pragma region ToUserInterface
 
 	//функции отчета о состо€нии
+
 	vector <map<string, string>> GetInfo_Seeds()
 	{
+		mt_inv.lock();
 		vector <map<string, string>> info;
 
 
@@ -248,11 +259,13 @@ public:
 
 
 		}
+		mt_inv.unlock();
 		return info;
 	}
 
 	vector <map<string, string>> GetInfo_Resourses()
 	{
+		mt_inv.lock();
 		vector <map<string, string>> info;
 
 		for (pair <int, int> i : invertory_resourses)
@@ -272,11 +285,13 @@ public:
 			_info.insert(_p);
 			info.push_back(_info);
 		}
+		mt_inv.unlock();
 		return info;
 	}
 
 	vector <map<string, string>> GetInfo_Plants()
 	{
+		mt_inv.lock();
 		vector <map<string, string>> info;
 
 		for (plant i : invertory_plants)
@@ -314,7 +329,7 @@ public:
 			info.push_back(_info);
 		
 		}
-	
+		mt_inv.unlock();
 		return info;
 	}
 
@@ -326,9 +341,14 @@ public:
 	void periodic_tick()
 	{
 
+
 		while (true)
 		{
+			mt_inv.lock();
+	//		mt.lock();
 			plant_add_tick();
+	//		mt.unlock();
+			mt_inv.unlock();
 			this_thread::sleep_for(time_tick_rate);
 		}
 

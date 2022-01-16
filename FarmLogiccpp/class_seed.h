@@ -8,21 +8,23 @@ class seed: public entity
 {
 public:
 
+    //цена продажи
     int value;
+    //врем€ роста
     double time_of_growth = -1;
 
-    string _res;
-    string _seed;
-
+    //после посадки сем€ при сборе вовращает другие семена и рессурсы
+    //семена сад€т 
+    //ресурсы - нет
     map <int, int> resourses_reward;
     map <int, int> seed_reward;
 
 public:
     seed(int id, string name,
-        double time_of_growth = -1)
+        double time_of_growth)
         :entity(id, name)
     {
-        //нулевые мапы
+        //нулевые начальныые значени€
         map <int, int> _t;
         resourses_reward = _t;
 
@@ -32,9 +34,8 @@ public:
         this->time_of_growth = time_of_growth;
         this->type = types_entitys::t_seed;
     }
-    seed() :entity(-1, "n/a")
-    {
-    }
+
+    //функции добавлени€ возвращаемых ресурсов  и сем€н
 
     void create_ressourse_reward(int rew, int val=1)
     {
@@ -43,6 +44,7 @@ public:
         _p.second = val;
         resourses_reward.insert(_p);
     };
+
     void create_seed_reward(int rew, int val=1)
     {
         pair<int, int> _p;

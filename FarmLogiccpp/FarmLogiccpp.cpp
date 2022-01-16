@@ -1,37 +1,43 @@
 ﻿#pragma once
-//потоковый инпут
+//инпут
 #include <iostream>
-#include <fstream>
+//#include <fstream>
 
-//удобные коллекции
+//коллекции
 #include <vector>
 #include <map>
 
-//базовый класс объектов
-#include "class_entity.h"
-//классы объектов
-#include "class_resourse.h"
-#include "class_seed.h"
-#include "data_base.h"
-
-#include "foo_info.h"
-
-#include "test_databse.h"
-
-#include "game_interface.h"
-
 #include <conio.h >//getch
 
+//базовый класс объектов
+//#include "class_entity.h"
+//классы объектов
+//#include "class_resourse.h"
+//#include "class_seed.h"
+
+
+#include "data_base.h"
+//#include "foo_info.h"
+#include "test_databse.h"
+#include "game_interface.h"
 #include "Keys.h"
+
+
 
 //using namespace std;
 
+/*
+точка входа в программу
+*/
 
 
 int main()
 {
 
+    
+//тестовые значения
 #pragma region load
+
 
     databse db;
     db.load();
@@ -57,18 +63,8 @@ int main()
 
 #pragma endregion
 
-
-
-
-   // thread th(ticker, ref(inv));
- 
-
-
     MyWindow W = MyWindow(inv,db);
-  W.start();
-
-  //  cout << W.ShowModal(key_inv_seed) << endl;
-
+    W.start();
 
 }
 

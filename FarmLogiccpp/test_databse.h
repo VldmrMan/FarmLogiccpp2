@@ -13,7 +13,7 @@ class databse
 	public:
 
 	entity	   null_entity = entity(0, "null");
-	seed	   null_seed = seed(0, "null");
+	seed	   null_seed = seed(0, "null",-1);
 	resourse   null_resourse = resourse(0, "null");
 
 	vector <entity> GO_entity;
